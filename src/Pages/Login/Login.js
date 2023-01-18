@@ -1,10 +1,27 @@
-import React from 'react';
+import { error } from 'daisyui/src/colors';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const {login} =useContext(AuthContext)
+
     const handleLogin = e =>{
         e.preventDefault();
+        const form =e.target;
+        const password=form.password.value;
+        const email =form.email.value;
+
+        login(email, password) 
+        .then(result =>{
+                const user =result.user;
+                console.log(user);
+        })
+        .then(error =>console.log(error));
+
+
+
 
     }
     return (
