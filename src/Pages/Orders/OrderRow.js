@@ -49,4 +49,4 @@ const OrderRow = ({ order, handleDelete, handleStatusUpdate }) => {
     );
 };
 
-export default OrderRow; 
+export default OrderRow;
