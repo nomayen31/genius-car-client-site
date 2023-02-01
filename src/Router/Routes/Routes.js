@@ -5,6 +5,7 @@ import Home from '../../Pages/Home/Home/Home';
 import Login from '../../Pages/Login/Login';
 import Orders from '../../Pages/Orders/Orders';
 import SignUp from '../../Pages/SignUp/SignUp';
+import PriviteRoute from '../PriviteRoute/PriviteRoute';
 
 const router = createBrowserRouter([
     {
@@ -25,12 +26,12 @@ const router = createBrowserRouter([
             },
             {
                 path:'/checkout/:id',
-                element: <Checkout></Checkout>,
+                element:<PriviteRoute><Checkout></Checkout></PriviteRoute>,
                 loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
             },
             {
                 path:'/orders',
-                element:<Orders></Orders>
+                element:<PriviteRoute><Orders></Orders></PriviteRoute>
             }
         ]
     }
