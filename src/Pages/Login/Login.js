@@ -12,24 +12,25 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
 
-    const handleLogin = event =>{
+    const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
 
         login(email, password)
-        .then( result => {
-            const user = result.user;
-            console.log(user.email);
+            .then(result => {
+                const user = result.user;
 
-            const currentUser ={
-                email: user.email
-            }
-            
-            console.log(currentUser);
 
-            fetch('http://localhost:5000/jwt', {
+                const currentUser = {
+                    email: user.email
+                }
+
+                console.log(currentUser);
+
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -45,7 +46,7 @@ const Login = () => {
                     });
                 
             })
-        .catch(error => console.log(error));
+            .catch(error => console.log(error));
     }
 
     return (
